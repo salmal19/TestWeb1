@@ -16,7 +16,7 @@ namespace TestWeb1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-             //Richiamo i servizi MVC
+             //Fornisco i servizi MVC necessari per il middleware di routing
              services.AddMvc();
         }
 
@@ -39,6 +39,7 @@ namespace TestWeb1
             app.UseEndpoints(routeBuilder =>
             {
                 routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                
             });
 
         }

@@ -11,5 +11,6 @@ namespace TestWeb1.Controllers
         public IActionResult Detail(string id){
             return Content($"Sono detail e ho ricevuto l'id {id}");
         }
+
     }
 }
