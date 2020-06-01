@@ -16,6 +16,8 @@ namespace TestWeb1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+             //Richiamo i servizi MVC
+             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,23 +28,19 @@ namespace TestWeb1
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            //2° Middleware
+          
+            //2° Middleware per file statici
             app.UseStaticFiles();
-
-            //3° Middleware
+            
+            //3° Middleware 
             app.UseRouting();
 
             //4° Middleware
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(routeBuilder =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    //Inserimento dati in QueryString
-                    string nome = context.Request.Query["nome"];
-                    await context.Response.WriteAsync($"Hello {nome}");
-                });
+                routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
