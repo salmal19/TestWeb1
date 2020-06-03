@@ -23,6 +23,9 @@ namespace TestWeb1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //EndPointRoutingMiddleware
+            app.UseRouting();
+
             //1° Middleware
             if (env.IsDevelopment())
             {
@@ -32,10 +35,7 @@ namespace TestWeb1
             //2° Middleware per file statici
             app.UseStaticFiles();
             
-            //3° Middleware 
-            app.UseRouting();
-
-            //4° Middleware
+            //EndPointMiddleware
             app.UseEndpoints(routeBuilder =>
             {
                 routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
