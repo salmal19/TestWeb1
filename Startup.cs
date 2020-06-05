@@ -17,7 +17,11 @@ namespace TestWeb1
         public void ConfigureServices(IServiceCollection services)
         {
              //Fornisco i servizi MVC necessari per il middleware di routing
-             services.AddMvc();
+             services.AddMvc()
+             #if DEBUG
+             .AddRazorRuntimeCompilation()
+             #endif
+             ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

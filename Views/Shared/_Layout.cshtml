@@ -4,22 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elenco dei corsi</title>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </environment>
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/jquery/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/font-awesome/all.min.css">
+    </environment>
+    
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>Pagina1</li>
-                <li>Pagina2</li>
-                <li>Pagina3</li>
-                <li>Pagina4</li>
-                <li>Pagina5</li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand">MyCourse</a>
+            <button class="navbar-toggler" data-target="#navbar" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index" asp-controller="Courses">Catalogo corsi</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
-    @RenderBody()
-    <footer>
+        <div class="ml-4">
+            @RenderBody()
+        </div>
+    <footer class="ml-4">
         <p>Contattaci al numero ...</p>
     </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/jquery-3.4.1.min.js"></script>
+        <script src="~/lib/jquery/jquery-ui.min.js"></script>
+        <script src="~/lib/popper/popper.min.js"></script>
+        <script src="~/lib/bootstrap/bootstrap.min.js"></script>
+        <script src="~/lib/font-awesome/all.min.js"></script>
+    </environment>
+    <environment exclude="Development">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/56b19ae4b1.js" crossorigin="anonymous"></script>
+    </environment>
 </body>
 </html>
