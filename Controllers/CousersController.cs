@@ -7,12 +7,16 @@ namespace TestWeb1.Controllers
 {
     public class CoursesController : Controller
     {
+        private readonly ICourseService courseService;
+        public CoursesController(ICourseService courseService)
+        {
+            this.courseService = courseService;
+            
+        }
         public IActionResult Index(){
             ViewData["Title"] = "Catalogo dei corsi";
-            //Creo istanza del serivizio applicativo CourseService
-            var courseService = new CourseService();
-            
-            //Ottengo elenco corsi e lo inserisco in una lista di tipo CourseViewModel
+           
+            //Ottengo elenco corsi tramite la proprietà GetCourse e lo inserisco in una lista di tipo CourseViewModel
             List<CourseViewModel> courses = courseService.GetCourses();
 
             //Passo la lista alla View in modo da poterlo presentare in html
@@ -20,9 +24,11 @@ namespace TestWeb1.Controllers
         }
 
         public IActionResult Detail(int id){
-            var courseService = new CourseService();
+            
             CourseDetailViewModel viewModel =  courseService.GetCourse(id);
+
             ViewData["Title"] = viewModel.Title;
+
             return View(viewModel);
         }
 

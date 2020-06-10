@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TestWeb1.Models.Services.Application;
 
 namespace TestWeb1
 {
@@ -22,6 +23,7 @@ namespace TestWeb1
              .AddRazorRuntimeCompilation()
              #endif
              ;
+             services.AddTransient<ICourseService,CourseService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

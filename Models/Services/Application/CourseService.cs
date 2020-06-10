@@ -6,7 +6,7 @@ using TestWeb1.Models.ViewModels;
 
 namespace TestWeb1.Models.Services.Application
 {
-    public class CourseService
+    public class CourseService : ICourseService
     {
         public List<CourseViewModel> GetCourses()
         {
