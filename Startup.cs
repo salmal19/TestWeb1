@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TestWeb1.Models.Services.Application;
+using TestWeb1.Models.Services.Infrastructure;
 
 namespace TestWeb1
 {
@@ -23,7 +24,8 @@ namespace TestWeb1
              .AddRazorRuntimeCompilation()
              #endif
              ;
-             services.AddTransient<ICourseService,CourseService>();
+             services.AddTransient<ICourseService,AdoNetCourseService>();
+             services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
